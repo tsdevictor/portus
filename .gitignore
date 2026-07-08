@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.env.local
+npm-debug.log*
+
+# IDEs
+.idea/
+.vscode/
+
+# Outputs
+report.json
+*.prof
+*.log
