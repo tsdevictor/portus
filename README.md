@@ -1,6 +1,6 @@
-# Hugging Face Search
+# Portus
 
-A full-stack tool that scans Python, JavaScript, and TypeScript codebases for commercial AI API usage and suggests open-source Hugging Face model replacements.
+A full-stack LLM migration assistant that scans Python, JavaScript, and TypeScript codebases for commercial AI API usage and suggests open-source Hugging Face model replacements.
 
 ## Problem
 
@@ -32,11 +32,13 @@ upload
 
 ## Demo
 
-Add a screenshot after running the app locally:
+### Scan results
 
-```md
-![Demo screenshot](screenshots/demo.png)
-```
+![Scan results](screenshots/results.png)
+
+### Landing page
+
+![Landing page](screenshots/landing.png)
 
 ## Example scan result
 
