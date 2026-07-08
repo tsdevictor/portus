@@ -23,12 +23,12 @@ upload
 
 ## Features
 
-- Detects AI API usage in Python, JavaScript, and TypeScript files
-- Identifies providers such as OpenAI, Anthropic, and Gemini
-- Extracts nearby code context around each detection
-- Uses Mistral-based task classification when available
-- Ranks Hugging Face alternatives by task match, downloads, and likes
-- Serves results through a FastAPI backend and React/TypeScript frontend
+* Detects AI API usage in Python, JavaScript, and TypeScript files
+* Identifies providers such as OpenAI, Anthropic, and Gemini
+* Extracts nearby code context around each detection
+* Uses Mistral-based task classification when available
+* Ranks Hugging Face alternatives by task match, downloads, and likes
+* Serves results through a FastAPI backend and React/TypeScript frontend
 
 ## Demo
 
@@ -71,9 +71,9 @@ Add a screenshot after running the app locally:
 }
 ```
 
-## Run locally
+## Quick start
 
-### Backend
+Run the backend:
 
 ```bash
 cd backend
@@ -84,13 +84,7 @@ cd ..
 uvicorn backend.server:app --reload --port 8000
 ```
 
-Health check:
-
-```bash
-curl http://localhost:8000/api/health
-```
-
-### Frontend
+In a separate terminal, run the frontend:
 
 ```bash
 cd frontend
@@ -98,25 +92,61 @@ npm install
 npm run dev
 ```
 
-## Tests
+The frontend should be available through the local Vite URL printed in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+The backend should be available at:
+
+```text
+http://localhost:8000
+```
+
+Health check:
 
 ```bash
-pytest backend/tests
+curl http://localhost:8000/api/health
+```
+
+## Environment
+
+The app can run in detection-only mode without external credentials. Optional environment variables can be added through a local `.env` file.
+
+```text
+HF_TOKEN=
+PORT=8000
+```
+
+## Tests
+
+Run backend tests from the repository root:
+
+```bash
+pytest backend/tests -q
+```
+
+Run frontend build checks:
+
+```bash
+cd frontend
+npm run build
 ```
 
 ## Limitations
 
-- Static detection can miss wrapper functions, indirect imports, dynamically generated calls, or API usage hidden behind internal SDKs.
-- Model recommendations depend on the quality and freshness of Hugging Face metadata.
-- Suggested models are starting points, not guaranteed drop-in replacements.
-- This tool is not legal, compliance, privacy, or security advice.
+* Static detection can miss wrapper functions, indirect imports, dynamically generated calls, or API usage hidden behind internal SDKs.
+* Model recommendations depend on the quality and freshness of Hugging Face metadata.
+* Suggested models are starting points, not guaranteed drop-in replacements.
+* This tool is not legal, compliance, privacy, or security advice.
 
 ## Tech stack
 
-- Python
-- FastAPI
-- Mistral
-- Hugging Face Hub
-- React
-- TypeScript
-- Vite
+* Python
+* FastAPI
+* Mistral
+* Hugging Face Hub
+* React
+* TypeScript
+* Vite
