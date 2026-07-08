@@ -20,7 +20,7 @@ import uvicorn
 
 # Import logic from detect_ai_apis
 sys.path.insert(0, str(Path(__file__).parent))
-from detect_ai_apis import (
+from backend.detect_ai_apis import (
     scan_file,
     detect_backends,
     analyze_with_mistral,
@@ -92,7 +92,7 @@ async def scan(
             extensions = ["py"]
 
         # Scan
-        from detect_ai_apis import collect_files
+        from backend.detect_ai_apis import collect_files
         scan_files = collect_files(target, extensions) if target.is_dir() else [target]
 
         all_results = []
