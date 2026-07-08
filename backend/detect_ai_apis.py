@@ -494,7 +494,7 @@ def suggest_models(pipeline_tag: str, fallback_json: Optional[Path]) -> list[Mod
         try:
             models = json.loads(fallback_json.read_text())
             filtered = [m for m in models if m.get("task") == pipeline_tag]
-            filtered.sort(key=lambda m: m.get("downloads", 0), reverse=True)
+            filtered.sort(key=lambda m: (m.get("downloads", 0), m.get("likes", 0)), reverse=True)
             return [
                 ModelSuggestion(
                     id=m["id"],

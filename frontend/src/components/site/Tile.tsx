@@ -6,8 +6,8 @@ interface TileProps {
   subhead: string;
   primaryCta: string;
   secondaryCta: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   theme?: "light" | "dark";
   align?: "left" | "center";
   height?: "tall" | "med" | "short";
@@ -21,8 +21,6 @@ export const Tile = ({
   subhead,
   primaryCta,
   secondaryCta,
-  image,
-  imageAlt,
   theme = "light",
   align = "center",
   height = "tall",
@@ -31,22 +29,28 @@ export const Tile = ({
 }: TileProps) => {
   const isDark = theme === "dark";
   const heightCls =
-    height === "tall" ? "min-h-[680px] md:min-h-[760px]" : height === "med" ? "min-h-[560px]" : "min-h-[460px]";
+    height === "tall"
+      ? "min-h-[520px] md:min-h-[580px]"
+      : height === "med"
+      ? "min-h-[420px]"
+      : "min-h-[360px]";
 
   return (
     <section
       className={`relative w-full overflow-hidden ${heightCls} ${
-        isDark ? "bg-foreground text-background" : "bg-[hsl(var(--surface-light))] text-foreground"
+        isDark ? "bg-[#111111] text-white" : "bg-white text-foreground border-b border-black/[0.06]"
       }`}
     >
-      <img
-        src={image}
-        alt={imageAlt}
-        loading="lazy"
-        width={1920}
-        height={1280}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {isDark && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 75% at 50% 0%, rgba(99,102,241,0.08), transparent)",
+          }}
+        />
+      )}
+
       <div
         className={`relative z-10 mx-auto flex h-full max-w-[1200px] flex-col px-6 ${
           contentPosition === "top" ? "pt-16 md:pt-20" : "pt-12"
@@ -56,14 +60,24 @@ export const Tile = ({
         style={{ minHeight: "inherit" }}
       >
         {eyebrow && (
-          <p className={`subhead text-xs uppercase tracking-[0.2em] mb-4 ${isDark ? "opacity-70" : "opacity-60"}`}>
+          <p
+            className={`subhead text-xs uppercase tracking-[0.2em] mb-4 ${
+              isDark ? "text-white/40" : "opacity-50"
+            }`}
+          >
             {eyebrow}
           </p>
         )}
         <h2 className="display-headline text-[44px] md:text-[68px] lg:text-[80px] max-w-[12ch]">
           {headline}
         </h2>
-        <p className="subhead mt-4 text-lg md:text-xl max-w-[32ch]">{subhead}</p>
+        <p
+          className={`subhead mt-4 text-lg md:text-xl max-w-[32ch] ${
+            isDark ? "text-white/65" : "opacity-75"
+          }`}
+        >
+          {subhead}
+        </p>
 
         <div className={`mt-6 flex flex-wrap gap-3 ${align === "center" ? "justify-center" : ""}`}>
           <button className={isDark ? "pill-solid-invert" : "pill-solid"}>{primaryCta}</button>
