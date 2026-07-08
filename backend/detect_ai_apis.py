@@ -23,11 +23,9 @@ from typing import Optional
 from datetime import datetime
 
 # ─────────────────────────────────────────────
-# SSL context (macOS cert fix, same as sample_models.py)
+# SSL context
 # ─────────────────────────────────────────────
 SSL_CTX = ssl.create_default_context()
-SSL_CTX.check_hostname = False
-SSL_CTX.verify_mode = ssl.CERT_NONE
 
 # ─────────────────────────────────────────────
 # Detection patterns

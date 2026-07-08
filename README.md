@@ -94,7 +94,7 @@ npm install
 npm run dev
 ```
 
-The frontend should be available through the local Vite URL printed in the terminal, usually:
+The frontend should be available through the configured Vite dev URL:
 
 ```text
 http://localhost:8080
