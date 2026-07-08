@@ -97,7 +97,7 @@ npm run dev
 The frontend should be available through the local Vite URL printed in the terminal, usually:
 
 ```text
-http://localhost:5173
+http://localhost:8080
 ```
 
 The backend should be available at:
